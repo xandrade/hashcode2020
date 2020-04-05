@@ -18,14 +18,6 @@ file_names = ['f_libraries_of_the_world',
                'b_read_on',
                'a_example']
 
-file_names = ['b_read_on',
-              'c_incunabula',
-              'd_tough_choices',
-              'e_so_many_books',
-              'f_libraries_of_the_world',
-
-               'a_example']
-
 def add_to_lib(l3, l4):
   global libraries
   lib =  {'library_id': len(libraries),
@@ -55,7 +47,6 @@ def process_this():
 
   processed_books = []
 
-  
   result_library_summary = []
   result_library_book_ids = []
 
@@ -86,7 +77,7 @@ def process_this():
               pass
             else:
               processed_books.append(id) # <- need id
-              processed_books_lib_acc = processed_books_lib_acc +1
+              processed_books_lib_acc = processed_books_lib_acc + 1
               processed_books_lib.append(id) # <- need id
       else:
         #print(processed_books)
@@ -145,7 +136,7 @@ for file_name in file_names:
       add_to_lib(l3, l4)
 
     add_sum_scores()
-    libraries = sorted(libraries, key=itemgetter('sigup_process_days', 'sum_scores', 'maximum_allowed_shipment'), reverse=False)
+    libraries = sorted(libraries, key=itemgetter('sum_scores', 'maximum_allowed_shipment', 'sigup_process_days'), reverse=False)
     total_libraries, result_library_summary, result_library_book_ids = process_this()
 
     with open('./content/extended_round/' + file_name + '.out', 'w') as fo:
